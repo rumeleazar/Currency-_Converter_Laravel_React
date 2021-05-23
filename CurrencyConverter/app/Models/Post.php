@@ -11,6 +11,7 @@ class Post extends Model
     protected $fillable = [
         'country',
         'rate_today',
-        'rate_yesterday'
+        'rate_yesterday',
+        'date_today'    
     ];
 }

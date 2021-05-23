@@ -33,7 +33,8 @@ class CurrencyController extends Controller
             $trial = Post::create([
             "country" => $key,
             "rate_today" => $rateToday,
-            "rate_yesterday" => $rateYesterday
+            "rate_yesterday" => $rateYesterday,
+            "date_today" => $dateToday
             ]);            
 
         }
@@ -47,11 +48,12 @@ class CurrencyController extends Controller
     //MAIN FUNCTION OF THE CURRENCY CONVERTER
     public function getCurrencyConvert(Request $request) {
         //Get all variables
+        $dateToday = date('Y-m-d');
         $value = $request ->value;
         $country = $request ->country;
 
         //Get all values needed from database
-        $results = Post::where("country", $country)->get();
+        $results = Post::where("country", $country)->where("date_today", $dateToday)->get();
         $rate_today = $results[0]['rate_today'];
         $rate_yesterday = $results[0]['rate_yesterday'];
 

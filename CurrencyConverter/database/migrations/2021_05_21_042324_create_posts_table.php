@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table ->string('country');
             $table ->float('rate_today', 10, 10);
             $table ->float('rate_yesterday', 10, 10);
+            $table->date('date_today');
             $table->timestamps();
         });
     }
